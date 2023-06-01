@@ -29,7 +29,7 @@
         </div>
       </div>
       <!-- 트윗 -->
-      <tweet></tweet>
+      <tweet v-for="tweet in 5" :key="tweet"></tweet>
     </div>
   </div>
   <!-- 트렌드 섹션 -->
@@ -42,7 +42,7 @@ import Tweet from '../components/Tweet.vue';
 
 export default {
   components: { Trends, Tweet },
-  setup() {},
+  setup() { },
 };
 </script>
 
