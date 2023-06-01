@@ -1,40 +1,40 @@
 <template>
-    <div class="flex h-screen">  
+    <div class="flex h-screen container mx-auto">
         <!-- 사이드 섹션 -->
-        <div class="w-1/4 pt-5 ml-10 flex flex-col justify-between border-r border-gray-200">
+        <div class="w-20 lg:w-1/4 pt-5 lg:ml-10 flex flex-col justify-between border-r border-gray-200">
             <div class="flex flex-col items-center lg:items-start">
                 <i class="fab fa-twitter text-3xl text-primary lg:ml-4 mb-3"></i>
                 <!-- 트위터 사이드 메뉴 -->
                 <div class="flex flex-col items-start">
-                    <div class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full">
+                    <div class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full cursor-pointer">
                         <i class="fas fa-fw fa-home text-2xl"></i>
                         <span class="ml-3 text-lg hidden lg:inline-block">홈</span>
                     </div>
-                    <div class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full">
+                    <div class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full cursor-pointer">
                         <i class="fas fa-fw fa-hashtag text-2xl"></i>
                         <span class="ml-3 text-lg hidden lg:inline-block">탐색하기</span>
                     </div>
-                    <div class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full">
+                    <div class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full cursor-pointer">
                         <i class="fas fa-fw fa-bell text-2xl"></i>
                         <span class="ml-3 text-lg hidden lg:inline-block">알림</span>
                     </div>
-                    <div class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full">
+                    <div class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full cursor-pointer">
                         <i class="fas fa-fw fa-envelope text-2xl"></i>
                         <span class="ml-3 text-lg hidden lg:inline-block">쪽지</span>
                     </div>
-                    <div class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full">
+                    <div class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full cursor-pointer">
                         <i class="fas fa-fw fa-bookmark text-2xl"></i>
                         <span class="ml-3 text-lg hidden lg:inline-block">북마크</span>
                     </div>
-                    <div class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full">
+                    <div class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full cursor-pointer">
                         <i class="fas fa-fw fa-list-alt text-2xl"></i>
                         <span class="ml-3 text-lg hidden lg:inline-block">리스트</span>
                     </div>
-                    <div class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full">
+                    <div class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full cursor-pointer">
                         <i class="fas fa-fw fa-user text-2xl"></i>
                         <span class="ml-3 text-lg hidden lg:inline-block">프로필</span>
                     </div>
-                    <div class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full">
+                    <div class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full cursor-pointer">
                         <i class="fas fa-fw fa-ellipsis-h text-2xl"></i>
                         <span class="ml-3 text-lg hidden lg:inline-block">더보기</span>
                     </div>
@@ -104,11 +104,11 @@
                                         <span class="ml-1 text-sm">11</span>
                                     </div>
                                     <div class="text-gray-500 hover:text-green-500">
-                                        <i class="fa fa-retweet hover:bg-green-50"></i>                                    
+                                        <i class="fa fa-retweet hover:bg-green-50 rounded-full p-2"></i>                                    
                                         <span class="ml-1 text-sm">11</span>
                                     </div>
                                     <div class="text-gray-500 hover:text-red-500">
-                                        <i class="far fa-heart hover:bg-red-50"></i>
+                                        <i class="far fa-heart hover:bg-red-50 rounded-full p-2"></i>
                                         <span class="ml-1 text-sm">11</span>
                                     </div>
                                     <div class="text-gray-500 hover:text-primary">
@@ -132,7 +132,7 @@
                             <span class="text-lg font-bold">나를 위한 트렌드</span>
                             <i class="text-center fas fa-cog text-lg text-primary hover:bg-blue-50 p-2 rounded-full"></i>
                         </div>                        
-                        <div class="border-b border-gray-100 hover:bg-gray-100 px-4 py-2" v-for="trend in 4" :key="trend">
+                        <div class="border-b border-gray-100 hover:bg-gray-100 px-4 py-2 cursor-pointer" v-for="trend in 4" :key="trend">
                             <div class="flex">
                                 <div class="flex-1 flex flex-col ">
                                     <div class="text-gray-500">대한민국에서 트렌드 중</div>
@@ -146,7 +146,30 @@
                             <span class="text-primary text-lg rounded-xl">더보기</span>
                         </div>
                     </div>
-                </div>
+                    <!-- 팔로우 추천 -->
+                    <div class="mt-5 w-full ronded-xl bg-gray-50 flex flex-col">
+                        <div class="px-3 py-3 flex items-center justify-between">
+                            <span class="text-lg font-bold">팔로우 추천</span>                            
+                        </div>                        
+                        <div class="border-b border-gray-100 hover:bg-gray-100 px-4 py-2 cursor-pointer" v-for="follow in 4" :key="follow">
+                            <div class="flex items-center">
+                                <div>
+                                    <img src="https://picsum.photos/200" class="w-12 h-12 rounded-full hover:opacity-80 cursor-pointer" />                                
+                                </div>                                
+                                <div class="flex-1 flex flex-col px-3 text-sm">
+                                    <div class="font-bold">Kakao</div>
+                                    <div class="text-gray-500">@kakao</div>
+                                </div>
+                                <div>
+                                    <button class="border-2 border-primary hover:bg-blue-100 px-4 py-1 rounded-full text-primary text-sm">팔로우</button>                                
+                                </div>                                
+                            </div>
+                        </div>
+                        <div class="px-5 py-4 hover:bg-gray-100">
+                            <span class="text-primary text-lg rounded-xl">더보기</span>
+                        </div>
+                    </div>
+                </div>                
             </div>
         </div>
     </div>
