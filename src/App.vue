@@ -5,39 +5,11 @@
             <div class="flex flex-col items-center xl:items-start">
                 <i class="fab fa-twitter text-3xl text-primary xl:ml-4 mb-3"></i>
                 <!-- 트위터 사이드 메뉴 -->
-                <div class="flex flex-col items-start">
-                    <router-link to="/" class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full cursor-pointer">
-                        <i class="fas fa-fw fa-home text-2xl"></i>
-                        <span class="ml-3 text-lg hidden xl:inline-block">홈</span>
-                    </router-link>
-                    <router-link to="/" class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full cursor-pointer">
-                        <i class="fas fa-fw fa-hashtag text-2xl"></i>
-                        <span class="ml-3 text-lg hidden xl:inline-block">탐색하기</span>
-                    </router-link>
-                    <router-link to="/notifications" class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full cursor-pointer">
-                        <i class="fas fa-fw fa-bell text-2xl"></i>
-                        <span class="ml-3 text-lg hidden xl:inline-block">알림</span>
-                    </router-link>
-                    <router-link to="/messages" class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full cursor-pointer">
-                        <i class="fas fa-fw fa-envelope text-2xl"></i>
-                        <span class="ml-3 text-lg hidden xl:inline-block">쪽지</span>
-                    </router-link>
-                    <router-link to="" class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full cursor-pointer">
-                        <i class="fas fa-fw fa-bookmark text-2xl"></i>
-                        <span class="ml-3 text-lg hidden xl:inline-block">북마크</span>
-                    </router-link>
-                    <router-link to="" class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full cursor-pointer">
-                        <i class="fas fa-fw fa-list-alt text-2xl"></i>
-                        <span class="ml-3 text-lg hidden xl:inline-block">리스트</span>
-                    </router-link>
-                    <router-link to="/profile" class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full cursor-pointer">
-                        <i class="fas fa-fw fa-user text-2xl"></i>
-                        <span class="ml-3 text-lg hidden xl:inline-block">프로필</span>
-                    </router-link>
-                    <router-link to="" class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full cursor-pointer">
-                        <i class="fas fa-fw fa-ellipsis-h text-2xl"></i>
-                        <span class="ml-3 text-lg hidden xl:inline-block">더보기</span>
-                    </router-link>
+                <div class="flex flex-col items-start space-y-1">
+                    <router-link :to="route.path" class="hover:text-primary hover:bg-blue-50 px-4 py-2 rounded-full cursor-pointer" v-for="route in routes" :key="route">
+                        <i :class="route.icon"></i>
+                        <span class="ml-3 text-lg hidden xl:inline-block">{{ route.title }}</span>
+                    </router-link>                    
                 </div>
                 <!-- 트윗 버튼 -->
                 <div class="w-full xl:pr-3 flex justify-center">
@@ -51,7 +23,7 @@
             <div class="xl:pr-3 mb-3">
                 <button class="hidden xl:flex mt-3 px-2 py-1 w-full h-12 rounded-full hover:bg-blue-50 flex items-center">
                     <!-- <img src="https://avatars.githubusercontent.com/u/31090387?v=4" class="w-10 h-10 rounded-full" /> -->
-                    <img src="https://picsum.photos/100" class="w-10 h-10 rounded-full" />
+                    <img src="https://picsum.photos/100" class="w-101₩ h-10 rounded-full" />
                     <div class="xl:ml-2 hidden xl:block">
                         <div class="text-sm font-bold">soomin</div>
                         <div class="text-xs text-gray-500 text-left">@suri</div>
@@ -62,8 +34,7 @@
                     <img src="https://picsum.photos/100" class="w-10 h-10 rounded-full cursor-pointer hover:opacity-80" />
                 </div>
             </div>            
-        </div>
-        
+        </div>        
         
         <!-- 메인 페이지 -->
         <div class="flex-1 flex h-screen">
@@ -73,5 +44,19 @@
 </template>
 
 <script>
-export default {}
+import { ref, onBeforeMount } from 'vue'
+import router from './router'
+
+export default {
+    setup() {
+        const routes = ref([])
+
+        onBeforeMount(() => {
+            routes.value = router.options.routes
+        })
+
+        return {routes}
+    },
+}
+
 </script>
