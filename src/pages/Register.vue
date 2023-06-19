@@ -13,7 +13,8 @@
 </template>
 
 <script>
-import {ref} from 'vue'
+import { ref } from 'vue'
+import { auth } from '../firebase'
 
 export default {
     setup() {
@@ -22,9 +23,15 @@ export default {
         const password = ref('')
         const loading = ref(false)
 
-        const onRegister = (() => {
-            console.log(username.value, email.value, password.value)
-        })
+        const onRegister = async () => {
+            // console.log(username.value, email.value, password.value)
+            try {
+                const credential = await auth.createUserWithEmailandPassword(email.value, password.value)
+                console.log(credential)
+            } catch(e) {
+                console.log('create user with email and password error:', e)
+            }
+        }
 
         return {
             username,
